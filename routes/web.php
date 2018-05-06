@@ -11,6 +11,14 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/admin', 'StaticPagesController@admin')->name('admin');
+Route::get('/help', 'StaticPagesController@help')->name('help');
+// Route::get('/', 'StaticPagesController@login')->name('login');
+Route::get('/yanz', 'StaticPagesController@yanz')->name('yanz');
+
+Route::get('signup','UsersController@create')->name('signup');
+Route::resource('users', 'UsersController');
+
+Route::get('login', 'SessionsController@create')->name('login');
+Route::post('login', 'SessionsController@store')->name('login');
+Route::delete('logout', 'SessionsController@destroy')->name('logout');
